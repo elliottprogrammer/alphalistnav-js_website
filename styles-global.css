@@ -12,6 +12,7 @@
   --black-color: #282828; 
   --bg-color: #F8F8FA;
   --code-bg-color: #F0E8E8;
+  --link-color: #005f97;
 }
 
 /* normalized */
@@ -25,11 +26,12 @@ html, body {
 p {
   font-weight: 300;
   color: #4A4A4A;
+  line-height: 1.5;
 }
 
 a, a:hover {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--link-color);
 }
 
 hr {
@@ -50,6 +52,39 @@ hr {
   padding: 1rem 0;
 }
 
+/* nav specialized to landing page */
+.logo {
+  margin: 0 0 0 1rem;
+}
+
+nav {
+  background-color: var(--bg-color);
+}
+
+/* hero section */
+.hero {
+  text-align: center;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  padding: 2rem 0 2rem 0;
+}
+
+.hero__title {
+  font-weight: 900;
+}
+
+.hero__tagline {
+  margin: 0 auto 2rem auto;
+  color: var(--white-color);
+}
+
+
+.hero__description {
+  margin: 0 auto 2rem auto;
+  color: var(--light-gray);
+  max-width: 600px;
+}
+
 /* tabs */
 .tab__container {
   position: relative;
@@ -68,18 +103,19 @@ hr {
 
 .tab__container .code {
   /* white-space: normal; */
-  padding: 1rem 1.5rem;
+  /* padding: 1rem 1.5rem; */
 }
 
 .tab {
   display: inline-block;
-  padding: 0.3rem 0.5rem;
-  font-weight: 200;
+  padding: 0.3rem 1.1rem;
+  font-weight: 300;
   cursor: pointer;
 }
 
 .tab.active {
-  border-bottom: 1px solid var(--primary-color);
+  color: var(--link-color);
+  border-bottom: 1px solid var(--link-color);
   font-weight: 700;
   display: inline-block;
 }
@@ -108,12 +144,21 @@ hr {
 
 .code--block {
   white-space: pre-wrap;
-  padding: 0 1.5rem;
+  /* padding: 0 1.5rem; */
 }
 
 .code--inline {
   padding: 3px 6px;
   font-size: 80%;
+}
+pre {
+  margin: 0;
+  height: auto;
+}
+
+.hljs {
+  background: transparent;
+  color: #666;
 }
 
 /* buttons */
@@ -180,7 +225,9 @@ hr {
 /* menu */
 nav {
   display: grid;
-  grid-template-columns: 70px auto;
+  grid-template-columns: auto auto;
+  align-items: center;
+  width: 100%;
 }
 
 .menu {
@@ -250,6 +297,7 @@ table {
   width: 100%;
   transition: color .3s ease-out;
   margin-bottom: 2rem;
+  font-size: 15px;
 }
 
 table td, table th {

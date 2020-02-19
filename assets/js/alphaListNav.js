@@ -42,7 +42,7 @@ function () {
     _defineProperty(this, "init", function () {
       // if first arg is not an HTMLElement, return
       if (!_this.listElem) {
-        console.error('The supplied argument must be a HTML DOM element.');
+        console.error('The supplied argument must be a HTML DOM element or a valid element id (string)');
         return;
       } // get array of list items
 
@@ -51,8 +51,8 @@ function () {
       // sort list into an alphabetical object
 
 
-      _this.alphaObj = _this._getAlphaObj(listItems);
-      console.log(_this.alphaObj); // generate new list html with sorting markup
+      _this.alphaObj = _this._getAlphaObj(listItems); //console.log(this.alphaObj);
+      // generate new list html with sorting markup
 
       _this.newListHTML = _this._generateNewListHTML(_this.alphaObj); // generate the alpha-nav buttons html
 
@@ -153,7 +153,7 @@ function () {
             }
           }
         } else {
-          _this.newListHTML.querySelector("#".concat(letter)).classList.add('active');
+          _this.newListHTML.querySelector("#".concat(letter.replace(/[-]/, '\\$&'))).classList.add('active');
         }
       }); // Show letter counts
 
@@ -455,7 +455,7 @@ function () {
       showCounts: true,
       showLetterHeadings: true
     };
-    this.listElem = this._isDomElement(listElem) ? listElem : false;
+    this.listElem = this._isDomElement(listElem) ? listElem : document.getElementById(listElem);
     this.options = _objectSpread({}, defaultOptions, {}, options);
     this.alphaObj = null;
     this.alphaNav = null;
